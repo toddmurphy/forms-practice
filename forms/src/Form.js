@@ -49,62 +49,74 @@ const CreateButton = styled.button`
 `
 
 const Form = () => {
+    //core concept --> 'register' each input ref to subscribe to changes
+    // 'name' is IMPORTANT because it's a 'unique' identifier to register
+    const { register, handleSubmit, errors } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+    }
+
+
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <FormWrapper>
                 <FormContainer>
                     <TextInput
                         name='firstname'
                         type='text'
                         placeholder='First name'
+                        ref={register({ required: true, minLength: 2 })}
                     />
                 </FormContainer>
+                {errors.firstname && errors.firstname.type === 'required' && <p>This is required</p>}
+                {errors.firstname && errors.firstname.type === 'minLength' && <p>This field required min length of 2 characters</p>}
                 <FormContainer>
                     <TextInput
                         name='lastname'
                         type='text'
                         placeholder='Last name'
+                        ref={register({ required: true })}
                     />
                 </FormContainer>
+                {errors.lastname && <p>This is required</p>}
                 <FormContainer>
                     <TextInput
                         name='address'
                         type='text'
-                        placeholder='Last name'
+                        placeholder='Address'
+                        ref={register({ required: true })}
                     />
                 </FormContainer>
+                {errors.address && <p>This is required</p>}
                 <FormContainer>
                     <SelectInput
-                        name='province'
-                        placeholder='Select province'>
-                        <option>Nova Scotia</option>
-                        <option>New Brunswick</option>
-                        <option>NewFoundland</option>
-                        <option>Ontario</option>
-                        <option>Quebec</option>
-                        <option>Prince Edward Island</option>
-                        <option>Alberta</option>
-                        <option>Saskatchewan</option>
-                        <option>Manitoba</option>
-                        <option>British Columbia</option>
-                        <option>Northwest Territories</option>
+                        name='gender'
+                        placeholder='Gender'>
+                        ref={register({ required: true })}
+                        <option value=''>Select...</option>
+                        <option value='male'>Male</option>
+                        <option value='male'>Female</option>
                     </SelectInput>
-
                 </FormContainer>
+                {errors.gender && <p>This is required</p>}
                 <FormContainer>
                     <TextInput
                         name='email'
                         type='text'
                         placeholder='Email'
+                        ref={register({ required: true })}
                     />
                 </FormContainer>
+                {errors.email && <p>This is required</p>}
                 <FormContainer>
                     <TextInput
                         name="age"
                         type='number'
                         placeholder='Age'
+                        ref={register({ required: true })}
                     />
                 </FormContainer>
+                {errors.age && <p>This is required</p>}
                 <FormContainer>
                     <CreateButton type='submit'>Submit form</CreateButton>
                 </FormContainer>
