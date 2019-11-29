@@ -68,6 +68,31 @@ const Form = () => {
                 </FormContainer>
                 <FormContainer>
                     <TextInput
+                        name='address'
+                        type='text'
+                        placeholder='Last name'
+                    />
+                </FormContainer>
+                <FormContainer>
+                    <SelectInput
+                        name='province'
+                        placeholder='Select province'>
+                        <option>Nova Scotia</option>
+                        <option>New Brunswick</option>
+                        <option>NewFoundland</option>
+                        <option>Ontario</option>
+                        <option>Quebec</option>
+                        <option>Prince Edward Island</option>
+                        <option>Alberta</option>
+                        <option>Saskatchewan</option>
+                        <option>Manitoba</option>
+                        <option>British Columbia</option>
+                        <option>Northwest Territories</option>
+                    </SelectInput>
+
+                </FormContainer>
+                <FormContainer>
+                    <TextInput
                         name='email'
                         type='text'
                         placeholder='Email'
